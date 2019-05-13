@@ -5,30 +5,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Principal frame = new Principal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public Principal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -39,9 +24,18 @@ public class Principal extends JFrame {
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
 		
-		JLabel lblHola = new JLabel("hola");
-		panel.add(lblHola);
+		JLabel lblArticulos = new JLabel("Articulos");
+		lblArticulos.setBounds(28, 90, 46, 14);
+		panel.add(lblArticulos);
+		
+		JComboBox Articulo = new JComboBox();
+		Articulo.addItem("Hardware");
+		Articulo.addItem("Software");
+		Articulo.addItem("Mantenimiento");
+	
+		Articulo.setBounds(84, 87, 102, 20);
+		panel.add(Articulo);
 	}
-
 }

@@ -23,24 +23,9 @@ public class Login extends JFrame {
 	private JPasswordField password;
 	private JPasswordField Password;
 
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					conexion.Conectar();
-					Login frame = new Login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-
-	public Login() {
+  	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 		setBounds(100, 100, 543, 408);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.DARK_GRAY);
@@ -96,12 +81,25 @@ public class Login extends JFrame {
 				
 		}
 		});
-		btnLogin.setBounds(412, 306, 89, 23);
+		btnLogin.setBounds(304, 306, 89, 23);
 		contentPane.add(btnLogin);
 		
 		Password = new JPasswordField();
 		Password.setBackground(Color.LIGHT_GRAY);
 		Password.setBounds(304, 235, 213, 20);
 		contentPane.add(Password);
+		
+		JButton btnNewUser = new JButton("New User");
+		btnNewUser.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+					NewUser a=new NewUser();
+					dispose();
+					a.setVisible(true);
+			}
+		});
+		btnNewUser.setBounds(428, 306, 89, 23);
+		contentPane.add(btnNewUser);
+		
 	}
 }

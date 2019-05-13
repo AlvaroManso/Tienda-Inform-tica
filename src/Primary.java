@@ -15,31 +15,14 @@ import javax.swing.border.LineBorder;
 import java.awt.Button;
 import javax.swing.UIManager;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Primary extends JFrame {
 
 	private JPanel contentPane;
 	private JButton btnNewButton;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Primary frame = new Primary();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public Primary() {
 		setBackground(new Color(0, 0, 0));
 		setResizable(false);
@@ -67,8 +50,11 @@ public class Primary extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Login.main(null);
-				setVisible(false);
+				Login a=new Login();
+				dispose();
+				a.setVisible(true);
+				
+	
 			}
 		});
 		btnNewButton.setBackground(UIManager.getColor("CheckBox.focus"));
@@ -77,8 +63,21 @@ public class Primary extends JFrame {
 		panel.add(btnNewButton);
 		
 		JButton btnSignUp = new JButton("Sign Up");
+		btnSignUp.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+					NewUser a=new NewUser();
+					dispose();
+					a.setVisible(true);
+			}
+		});
 		btnSignUp.setBorder(new LineBorder(Color.MAGENTA));
 		btnSignUp.setBounds(296, 239, 103, 51);
 		panel.add(btnSignUp);
+
+			
+		}
+
 	}
-}
+
