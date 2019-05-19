@@ -57,10 +57,9 @@ public class conexion {
     public static void EjecutarUpdate(String Sentencia) throws SQLException{
     	try{
     		consulta.executeUpdate(Sentencia);
-    		//System.out.println("Done.");
+    		System.out.println("Done.");
     	}catch(SQLException e){
-    		//JOptionPane.showMessageDialog(null, e.getMessage());
-    		throw new SQLException("");
+
     	} 
     }
     

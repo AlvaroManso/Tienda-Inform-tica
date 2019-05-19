@@ -12,6 +12,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileWriter;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -23,7 +25,8 @@ public class Login extends JFrame {
 	private JPasswordField password;
 	private JPasswordField Password;
 
-  	public Login() {
+  	public Login(String usuario, String Articulo) {
+  		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setBounds(100, 100, 543, 408);
@@ -56,6 +59,8 @@ public class Login extends JFrame {
 		lblName.setBounds(304, 68, 46, 14);
 		contentPane.add(lblName);
 		
+		
+		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -66,12 +71,12 @@ public class Login extends JFrame {
 			try {
 				boolean entrar=usuarioaceptado.usuariocorrecto(Name.getText(), Password.getText());
 				if (entrar) {
-					Principal a=new Principal();
+					Principal a=new Principal(usuario, Articulo);
 					dispose();
 					a.setVisible(true);
 				}else {
 					System.out.println("error");
-					JOptionPane.showMessageDialog(null, "error", "Contraseña o usuario incorrecto",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Contraseña o usuario incorrecto", "Error",JOptionPane.ERROR_MESSAGE);
 					
 				}
 			} catch (SQLException e1) {				
@@ -93,13 +98,70 @@ public class Login extends JFrame {
 		btnNewUser.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-					NewUser a=new NewUser();
+					NewUser a=new NewUser(usuario, Articulo);
 					dispose();
 					a.setVisible(true);
 			}
 		});
 		btnNewUser.setBounds(428, 306, 89, 23);
 		contentPane.add(btnNewUser);
+		
+		JButton btnInforme = new JButton("User report");
+		btnInforme.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		btnInforme.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ResultSet rs=conexion.EjecutarSentencia("Select * from clientes");
+                try {
+                   
+
+                    String ruta= "src/imagenes/cliente.csv";
+                    FileWriter fichero=new FileWriter(ruta);
+
+          
+                    fichero.write("clientes; contraseña");
+
+                    while(rs.next()) {
+                        fichero.write(rs.getString("usuario")+";"+rs.getString("contraseña")+";"+"\n");
+                    }
+                    fichero.close();
+                }catch(Exception e1) {
+                    System.out.println(e1);
+                }
+            }
+        });
+				
+		btnInforme.setBounds(20, 345, 134, 23);
+		contentPane.add(btnInforme);
+		
+		JButton btnInformeArticulos = new JButton("Article report");
+		btnInformeArticulos.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				ResultSet rs=conexion.EjecutarSentencia("Select * from articulos");
+                try {
+                   
+
+                    String ruta= "src/imagenes/articulos.csv";
+                    FileWriter fichero1=new FileWriter(ruta);
+
+          
+                    fichero1.write("Articulo; Stock, Price");
+
+                    while(rs.next()) {
+                        fichero1.write(rs.getString("Articulo")+";"+rs.getString("Stock")+";"+rs.getString("Precio")+";"+"\n");
+                    }
+                    fichero1.close();
+                }catch(Exception e1) {
+                    System.out.println(e1);
+                }
+            }
+        });
+		btnInformeArticulos.setBounds(184, 345, 134, 23);
+		contentPane.add(btnInformeArticulos);
 		
 	}
 }

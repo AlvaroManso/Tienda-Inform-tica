@@ -25,7 +25,7 @@ public class NewUser extends JFrame {
 	private JLabel lblPassword;
 	private JButton btnCreateUser;
 
-	public NewUser() {
+	public NewUser(String usuario, String Articulo) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setBounds(100, 100, 463, 379);
@@ -93,7 +93,7 @@ public class NewUser extends JFrame {
 		btnLogin.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e) {
-				Login a = new Login();
+				Login a = new Login(usuario, Articulo);
 				dispose();
 				a.setVisible(true);
 			}

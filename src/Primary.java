@@ -23,7 +23,8 @@ public class Primary extends JFrame {
 	private JPanel contentPane;
 	private JButton btnNewButton;
 
-	public Primary() {
+	public Primary(String usuario, String Articulo) {
+		//creamos el panel
 		setBackground(new Color(0, 0, 0));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,24 +40,25 @@ public class Primary extends JFrame {
 		panel.setBorder(null);
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
-		
+		//añadimos una imagen
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBackground(new Color(0, 0, 0));
 		lblNewLabel.setIcon(new ImageIcon(Primary.class.getResource("/Imagenes/logo.png")));
 		lblNewLabel.setBounds(10, 39, 264, 320);
 		panel.add(lblNewLabel);
-		
+		//creamos un boton, en este caso login
 		btnNewButton = new JButton("Login");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		//asignamos una accion en este caso llamamos a la ventana de login
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Login a=new Login();
+				Login a=new Login(usuario, Articulo);
 				dispose();
 				a.setVisible(true);
 				
-	
 			}
 		});
+		
 		btnNewButton.setBackground(UIManager.getColor("CheckBox.focus"));
 		btnNewButton.setBorder(new LineBorder(new Color(221, 160, 221)));
 		btnNewButton.setBounds(296, 125, 103, 51);
@@ -67,7 +69,7 @@ public class Primary extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-					NewUser a=new NewUser();
+					NewUser a=new NewUser(usuario, Articulo);
 					dispose();
 					a.setVisible(true);
 			}

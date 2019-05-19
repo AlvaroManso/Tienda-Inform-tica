@@ -18,7 +18,7 @@ public class Principal extends JFrame {
 
 	private JPanel contentPane;
 
-	public Principal() {
+	public Principal(String usuario, String Articulo) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 423);
 		contentPane = new JPanel();
@@ -32,7 +32,7 @@ public class Principal extends JFrame {
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JLabel lblArticulos = new JLabel("Articulos");
+		JLabel lblArticulos = new JLabel("Article");
 		lblArticulos.setBounds(10, 11, 128, 40);
 		lblArticulos.setForeground(Color.WHITE);
 		panel.add(lblArticulos);
@@ -46,7 +46,7 @@ public class Principal extends JFrame {
 		btnLogout.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent e) {
-				Login a=new Login();
+				Login a=new Login(usuario, Articulo);
 				dispose();
 				a.setVisible(true);
 
@@ -63,7 +63,7 @@ public class Principal extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				Hardware a = null;
 				try {
-					a = new Hardware();
+					a = new Hardware(usuario, Articulo);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -81,7 +81,7 @@ public class Principal extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				Software a = null;
 				try {
-					a = new Software();
+					a = new Software(usuario, Articulo);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -101,7 +101,7 @@ public class Principal extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				Maintenance a = null;
 				try {
-					a = new Maintenance();
+					a = new Maintenance(usuario, Articulo);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
