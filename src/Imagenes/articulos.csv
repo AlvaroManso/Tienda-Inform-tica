@@ -1,7 +1,6 @@
-Articulo; Stock, PriceProcesadores;20;250;
-Fuente alimentacion;50;70;
+Articulo; Stock, PriceProcesadores;24;100;
+Fuente de alimentacion;60;10;
 Disco duro;50;45;
-Juegos;60;200;
 Office;100;80;
 Windows;150;110;
 Antivirus;80;50;
@@ -11,4 +10,5 @@ Destornilladores;20;10;
 Soplador;10;4;
 alcohol;23;4;
 Soldador;20;40;
-husdfh;45;4;
+Ram;26;80;
+Juegos;75;90;

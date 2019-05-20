@@ -1,7 +1,10 @@
+package Tienda;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Edit {
+	//hacemos una seleccion de articulos
     public static String[] editar() throws SQLException {
         ResultSet clientes;
         int i = 0;

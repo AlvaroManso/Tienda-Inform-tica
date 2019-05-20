@@ -1,3 +1,5 @@
+package Tienda;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -64,7 +66,8 @@ public class NewUser extends JFrame {
 		lblPassword.setForeground(Color.WHITE);
 		lblPassword.setBounds(313, 175, 70, 14);
 		panel.add(lblPassword);
-
+		
+		//creamos el boton create user para que añada mediante un insert un nuevo cliente en la base de datos
 		btnCreateUser = new JButton("Create User");
 		btnCreateUser.addMouseListener(new MouseAdapter() {
 			@Override
@@ -101,6 +104,7 @@ public class NewUser extends JFrame {
 		btnLogin.setBounds(334, 293, 114, 23);
 		panel.add(btnLogin);
 	}
+	//creamos la funcion que compruebe si el usuario que estamos creando esta ya en la BBDD
 	public static boolean comprobarUsuario(String usuario)  {
 		try {
 			if (conexion.EjecutarSentencia("SELECT * FROM clientes WHERE usuario='"+usuario+"'").next()) {

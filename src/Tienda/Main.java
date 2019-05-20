@@ -1,3 +1,4 @@
+package Tienda;
 //llamamos a primary para abrir el programa
 public class Main {
 

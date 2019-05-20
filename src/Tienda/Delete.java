@@ -1,3 +1,5 @@
+package Tienda;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -35,10 +37,10 @@ public class Delete extends JFrame {
 		panel.setBackground(new Color(153, 51, 153));
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
-		
+		//creamos un comboBox que es un desplegable para seleccionar
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(100, 58, 174, 20);
-		
+		//usamos la clase delete que contiene todos los articulos para que los muestre el desplegable
 		String[] articulos=Eliminar.eliminar();
         for (int i = 0; i < articulos.length; i++) {
             comboBox.addItem(articulos[i]);
@@ -67,9 +69,10 @@ public class Delete extends JFrame {
 				
 				try {
 
-                    //aqui ponemos su respectiva sentencia
+                    //ponemos la sentencia
 
                     conexion.EjecutarUpdate(
+                    		//añadimos el delete sobre la base de datos
                             "DELETE FROM `articulos` WHERE Articulo ='"+Articulo+"'");
                     JOptionPane.showMessageDialog(null, "Delete "+ Articulo);
                 } catch (SQLException e1) {

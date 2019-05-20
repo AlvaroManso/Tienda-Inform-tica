@@ -1,3 +1,5 @@
+package Tienda;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -60,12 +62,13 @@ public class Login extends JFrame {
 		contentPane.add(lblName);
 		
 		
-		
+		//creamos el boton de login con su funcion
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		//creamos la funcion que controle si el usuario y la contraseña son correctos respecto a la base de datos
 		btnLogin.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 			try {
@@ -112,12 +115,13 @@ public class Login extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
+		//preparamos el select para que verifique en la base de datos
 		btnInforme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet rs=conexion.EjecutarSentencia("Select * from clientes");
                 try {
                    
-
+                	//añadimos un boton que carge los cambios en los clientes y los almacene en un archivo .csv
                     String ruta= "src/imagenes/cliente.csv";
                     FileWriter fichero=new FileWriter(ruta);
 
@@ -136,7 +140,7 @@ public class Login extends JFrame {
 				
 		btnInforme.setBounds(20, 345, 134, 23);
 		contentPane.add(btnInforme);
-		
+		//creamos un boton que almacene los cambios en los articulos en un archivo .csv
 		JButton btnInformeArticulos = new JButton("Article report");
 		btnInformeArticulos.addMouseListener(new MouseAdapter() {
 			

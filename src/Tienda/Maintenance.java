@@ -1,33 +1,35 @@
+package Tienda;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import com.mysql.jdbc.PreparedStatement;
 
-import java.awt.Color;
-import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.ScrollPaneConstants;
 
-public class Hardware extends JFrame {
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Maintenance extends JFrame {
 
 	private JPanel contentPane;
-	 
-	public Hardware(String usuario, String Articulo) throws SQLException {
+	
+	public Maintenance(String usuario, String Articulo) throws SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 623, 435);
+		setBounds(100, 100, 629, 396);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(102, 51, 102));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -51,7 +53,6 @@ public class Hardware extends JFrame {
 		btnMain.setBounds(431, 289, 89, 23);
 		panel.add(btnMain);
 		
-
 		JButton btnAadir = new JButton("Add");
 		btnAadir.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -82,26 +83,41 @@ public class Hardware extends JFrame {
 		panel.add(btnDelete);
 		
 		JButton btnEdit = new JButton("Edit");
+		btnEdit.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				
+				EditarArticulo a = null;
+				try {
+					a = new EditarArticulo(usuario, Articulo);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				dispose();
+				a.setVisible(true);
+				}
+		});
+			
+		
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EditarArticulo p;
 				try {
-					p = new EditarArticulo(usuario, Articulo);	
+					p = new EditarArticulo(usuario, Articulo);
 					dispose();
 				p.setVisible(true);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-			
+				
 
 				
 			}
 		});
-		
 		btnEdit.setBounds(0, 190, 89, 23);
 		panel.add(btnEdit);
-		
+		//creamos la tabla donde muestre los articulos de la ventana en la que estamos en este caso Maintenance
 		JTable table = new JTable();
 		table.setEnabled(false);
 		table.setAutoCreateRowSorter(true);
@@ -110,23 +126,24 @@ public class Hardware extends JFrame {
 		
 		Object[][] datos = new Object[0][0];
         String[] titulo = {"Article", "Stock", "Price"};
-        DefaultTableModel Hardware = new DefaultTableModel(datos,titulo);
+        DefaultTableModel Maintenance = new DefaultTableModel(datos,titulo);
         
-        table.setModel(Hardware);
+        table.setModel(Maintenance);
+        //hacemos el select en la base de datos para ver los articulos que nos va a mostrar la tabla
         String consulta = "Select Articulo, Stock, precio from articulos where tipos=?";
         PreparedStatement sentencia = (PreparedStatement) conexion.conexionBBDD().prepareStatement (consulta);
-        sentencia.setString(1, "Hardware");
+        sentencia.setString(1, "Mantenimiento");
         ResultSet rs = sentencia.executeQuery();
         
         try {
             while (rs.next()) {
-            String [] Hardware1 = new String[3];
+            String [] Maintenance1 = new String[3];
             for (int i = 0; i<3; i++) {
-            	Hardware1[i] = rs.getString(i+1);
+            	Maintenance1[i] = rs.getString(i+1);
             }
 
 
-            Hardware.addRow(Hardware1);
+            Maintenance.addRow(Maintenance1);
             //panel.add(table);
 
             }
@@ -143,6 +160,4 @@ public class Hardware extends JFrame {
 	}
 	private static void addColumn(String string) {
 	}
-
 }
-

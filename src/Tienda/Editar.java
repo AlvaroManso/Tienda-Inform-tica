@@ -1,3 +1,5 @@
+package Tienda;
+
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -96,11 +98,12 @@ public class Editar extends JFrame {
 		Article.setColumns(10);
 		Article.setBounds(49, 48, 86, 20);
 		panel.add(Article);
-		
+	
 		JButton Editar = new JButton("Editar");
 		Editar.setForeground(new Color(255, 0, 255));
 		Editar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//funcion que edita el articulo que hemos seleccionado en la ventana anterior
 				String Tipo = (String) Type.getSelectedItem();
 				try {
 					conexion.EjecutarUpdate("UPDATE `articulos` SET `Tipos`='" + Tipo + "',`Articulo`='" + Article.getText()

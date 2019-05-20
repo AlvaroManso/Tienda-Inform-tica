@@ -1,3 +1,5 @@
+package Tienda;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -35,7 +37,7 @@ public class EditarArticulo extends JFrame {
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(100, 58, 174, 20);
-		
+		//llamamos a edit que tiene todos los datos de los articulos
 		String[] articulos=Edit.editar();
         for (int i = 0; i < articulos.length; i++) {
             comboBox.addItem(articulos[i]);
@@ -58,7 +60,7 @@ public class EditarArticulo extends JFrame {
 		});
 		btnMain.setBounds(284, 217, 89, 23);
 		panel.add(btnMain);
-		
+		//boton que nos lleva a la ventana edit
 		JButton Edit = new JButton("Edit");
 		Edit.addActionListener(new ActionListener() {
 	

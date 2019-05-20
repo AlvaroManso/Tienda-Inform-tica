@@ -1,3 +1,5 @@
+package Tienda;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -36,12 +38,12 @@ public class Principal extends JFrame {
 		lblArticulos.setBounds(10, 11, 128, 40);
 		lblArticulos.setForeground(Color.WHITE);
 		panel.add(lblArticulos);
-		
+		//añadimos una imagen
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(Principal.class.getResource("/Imagenes/logo.png")));
 		label.setBounds(251, 0, 273, 352);
 		panel.add(label);
-		
+		//boton de deslogear
 		JButton btnLogout = new JButton("Sign Out");
 		btnLogout.addMouseListener(new MouseAdapter() {
 
@@ -54,7 +56,7 @@ public class Principal extends JFrame {
 		});
 		btnLogout.setBounds(425, 340, 89, 23);
 		panel.add(btnLogout);
-		
+		//boton que llame a hardware
 		JButton btnGo = new JButton("Hardware");
 		btnGo.setBackground(new Color(153, 51, 255));
 		btnGo.setForeground(Color.MAGENTA);
@@ -74,7 +76,7 @@ public class Principal extends JFrame {
 		});
 		btnGo.setBounds(10, 46, 119, 23);
 		panel.add(btnGo);
-		
+		//boton que llame a software
 		JButton btnSoftware = new JButton("Software");
 		btnSoftware.addMouseListener(new MouseAdapter() {
 
@@ -94,7 +96,7 @@ public class Principal extends JFrame {
 		btnSoftware.setBackground(new Color(153, 51, 255));
 		btnSoftware.setBounds(10, 80, 119, 23);
 		panel.add(btnSoftware);
-		
+		//boton que llame a Maintenance
 		JButton btnMaintance = new JButton("Maintenance");
 		btnMaintance.addMouseListener(new MouseAdapter() {
 			

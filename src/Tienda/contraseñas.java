@@ -1,8 +1,10 @@
+package Tienda;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class contraseñas {
-	
+	//Creamos una funcion que seleccione las contraseñas de los usuarios de la base de datos
 	public static String[] contraseña() throws SQLException {
 		ResultSet contraseñas;
 		int i = 0;

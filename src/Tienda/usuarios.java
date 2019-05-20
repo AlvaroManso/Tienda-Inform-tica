@@ -1,8 +1,10 @@
+package Tienda;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class usuarios {
-	
+	//creamos una funcion que seleccione los usuarios de la base de datos
 	public static String[] usuario() throws SQLException {
 		ResultSet usuarios;
 		int i = 0;
