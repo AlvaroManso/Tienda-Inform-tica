@@ -1,14 +1,12 @@
-clientes; contraseñaUsername;Password;
-Username;Password;
-Username;Password;
-pepe;manolo;
-Alvaro;manolo;
-Javi;manolo;
-Alvaro;manolo;
-Kevin;manolo;
-Mazi;manolo;
-Antonio;manolo;
-Prueba;prueba;
-maximo;manolo;
-Ramona;ramona;
-mACHUCA;MACHUCA;
+clientes, contraseñapepe,manolo,
+Alvaro,manolo,
+Javi,manolo,
+Alvaro,manolo,
+Kevin,manolo,
+Mazi,manolo,
+Antonio,manolo,
+Prueba,prueba,
+maximo,manolo,
+Ramona,ramona,
+mACHUCA,MACHUCA,
+virginia,manolo,

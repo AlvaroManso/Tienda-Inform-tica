@@ -126,10 +126,10 @@ public class Login extends JFrame {
                     FileWriter fichero=new FileWriter(ruta);
 
           
-                    fichero.write("clientes; contraseña");
+                    fichero.write("clientes, contraseña");
 
                     while(rs.next()) {
-                        fichero.write(rs.getString("usuario")+";"+rs.getString("contraseña")+";"+"\n");
+                        fichero.write(rs.getString("usuario")+","+rs.getString("contraseña")+","+"\n");
                     }
                     fichero.close();
                 }catch(Exception e1) {
@@ -153,10 +153,10 @@ public class Login extends JFrame {
                     FileWriter fichero1=new FileWriter(ruta);
 
           
-                    fichero1.write("Articulo; Stock, Price");
+                    fichero1.write("Articulo, Stock, Price,");
 
                     while(rs.next()) {
-                        fichero1.write(rs.getString("Articulo")+";"+rs.getString("Stock")+";"+rs.getString("Precio")+";"+"\n");
+                        fichero1.write(rs.getString("Articulo")+","+rs.getString("Stock")+","+rs.getString("Precio")+"\n");
                     }
                     fichero1.close();
                 }catch(Exception e1) {
